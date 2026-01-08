@@ -1,6 +1,5 @@
 import { Navigate } from "react-router-dom";
 import { getToken } from "../services/tokens";
-
 const ProtectedRoute = ({ children }) => {
   const token = getToken();
   if (!token) {
@@ -8,5 +7,4 @@ const ProtectedRoute = ({ children }) => {
   }
   return children;
 };
-
 export default ProtectedRoute;

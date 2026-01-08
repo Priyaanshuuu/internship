@@ -3,14 +3,12 @@ import { fetchUsers } from "../api/authAPI";
 import { removeToken } from "../services/tokens";
 import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
-
 const Dashboard = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [hoveredCard, setHoveredCard] = useState(null);
   const navigate = useNavigate();
-
   const loadUsers = async () => {
     try {
       const data = await fetchUsers();
@@ -21,16 +19,13 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
-
   useEffect(() => {
     loadUsers();
   }, []);
-
   const logout = () => {
     removeToken();
     navigate("/login");
   };
-
   if (loading) {
     return (
       <div className="dashboard-container">
@@ -41,7 +36,6 @@ const Dashboard = () => {
       </div>
     );
   }
-
   if (error) {
     return (
       <div className="dashboard-container">
@@ -55,7 +49,6 @@ const Dashboard = () => {
       </div>
     );
   }
-
   return (
     <div className="dashboard-container">
       <nav className="dashboard-nav">
@@ -70,7 +63,6 @@ const Dashboard = () => {
           </button>
         </div>
       </nav>
-
       <div className="dashboard-stats">
         <div className="stat-card">
           <div className="stat-number">{users.length}</div>
@@ -85,7 +77,6 @@ const Dashboard = () => {
           <div className="stat-label">Premium</div>
         </div>
       </div>
-
       <div className="users-section">
         <h2 className="section-title">Team Members</h2>
         <div className="users-grid">
@@ -123,5 +114,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
 export default Dashboard;

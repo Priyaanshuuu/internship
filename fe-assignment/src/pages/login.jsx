@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setToken } from "../services/tokens";
 import "./login.css";
-
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -25,7 +23,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="login-container">
       <div className="login-content">
@@ -34,7 +31,6 @@ const Login = () => {
           <h1 className="login-title">Welcome Back</h1>
           <p className="login-subtitle">Sign in to access your dashboard</p>
         </div>
-
         <form onSubmit={handleLogin} className="login-form">
           <div className="input-group">
             <label htmlFor="email" className="input-label">
@@ -51,7 +47,6 @@ const Login = () => {
               className="login-input"
             />
           </div>
-
           <div className="input-group">
             <label htmlFor="password" className="input-label">
               <span className="label-icon">🔒</span>
@@ -67,14 +62,12 @@ const Login = () => {
               className="login-input"
             />
           </div>
-
           {error && (
             <div className="error-message">
               <span className="error-icon">⚠️</span>
               {error}
             </div>
           )}
-
           <button type="submit" disabled={loading} className="login-button">
             {loading ? (
               <>
@@ -89,7 +82,6 @@ const Login = () => {
             )}
           </button>
         </form>
-
         <div className="login-footer">
           <p className="footer-text">Test credentials: any email/password</p>
         </div>
@@ -97,5 +89,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;
